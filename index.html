@@ -438,15 +438,32 @@
             const loader = new GLTFLoader();
             const gltf = await loader.loadAsync('models/hippocampus_ca1_pyramidal_cell.glb');
 
+            // Collect ALL geometries from the model
+            const geometriesToMerge = [];
+            gltf.scene.traverse((child) => {
+                if (child.isMesh) {
+                    // Clone and apply any transforms from the scene hierarchy
+                    const geom = child.geometry.clone();
+                    child.updateMatrixWorld();
+                    geom.applyMatrix4(child.matrixWorld);
+                    geometriesToMerge.push(geom);
+                }
+            });
+
+            // Merge all parts into one geometry
+            let pyramidalGeometry = mergeGeometries(geometriesToMerge, false);
+
+            // Center it so it rotates around its middle
+            pyramidalGeometry.center();
             // Extract geometry from the loaded model
             // Note: The structure depends on how the model was exported
             // We may need to traverse to find the geometry
-            let pyramidalGeometry;
-            gltf.scene.traverse((child) => {
-                if (child.isMesh && !pyramidalGeometry) {
-                    pyramidalGeometry = child.geometry;
-                }
-            });
+            // let pyramidalGeometry;
+            // gltf.scene.traverse((child) => {
+            //     if (child.isMesh && !pyramidalGeometry) {
+            //         pyramidalGeometry = child.geometry;
+            //     }
+            // });
 
             // Scale the geometry if needed (neurons can be very small or large)
             pyramidalGeometry.scale(0.25, 0.25, 0.25);  // Adjust this value as needed
