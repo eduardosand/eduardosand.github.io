@@ -531,13 +531,19 @@
                 const col = i % sqrtCount;
                 
                 // Add instance with random geometry
-                const id = batchedMesh.addInstance(Math.floor(Math.random() * geometriesLODArray.length));
+
+                const geoIndex = Math.floor(Math.random() * geometriesLODArray.length);
+                const id = batchedMesh.addInstance(geoIndex);
                 
                 // Position in grid
                 position.set(col * size + start, 0, row * size + start);
                 
                 // Random rotation
-                quaternion.random();
+                if (geoIndex === 0) {
+                    quaternion.identity();  // No rotation
+                } else {
+                    quaternion.random();
+                }
                 
                 // Set transform
                 batchedMesh.setMatrixAt(id, matrix.compose(position, quaternion, scale));
