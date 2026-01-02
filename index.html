@@ -516,7 +516,7 @@
                 batchedMesh.addGeometryLOD(geometryId, geometryLOD[1], 50);
                 batchedMesh.addGeometryLOD(geometryId, geometryLOD[2], 100);
                 batchedMesh.addGeometryLOD(geometryId, geometryLOD[3], 125);
-                batchedMesh.addGeometryLOD(geometryId, geometryLOD[4], 200);
+                batchedMesh.addGeometryLOD(geometryId, geometryLOD[4], 500);
             }
 
             updateProgress(80);
@@ -540,7 +540,8 @@
                 
                 // Random rotation
                 if (geoIndex === 0) {
-                    quaternion.identity();  // No rotation
+                    // quaternion.identity();  // No rotation
+                    quaternion.set(0, 0, 0, 1);
                 } else {
                     quaternion.random();
                 }
