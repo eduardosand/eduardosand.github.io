@@ -513,10 +513,10 @@
                 const geometryId = batchedMesh.addGeometry(geometryLOD[0], -1, LODIndexCount[i]);
                 
                 // Add LOD levels with increasing distances
-                batchedMesh.addGeometryLOD(geometryId, geometryLOD[1], 50);
-                batchedMesh.addGeometryLOD(geometryId, geometryLOD[2], 100);
-                batchedMesh.addGeometryLOD(geometryId, geometryLOD[3], 250);
-                batchedMesh.addGeometryLOD(geometryId, geometryLOD[4], 500);
+                batchedMesh.addGeometryLOD(geometryId, geometryLOD[1], 150);
+                batchedMesh.addGeometryLOD(geometryId, geometryLOD[2], 300);
+                batchedMesh.addGeometryLOD(geometryId, geometryLOD[3], 500);
+                batchedMesh.addGeometryLOD(geometryId, geometryLOD[4], 750);
             }
 
             updateProgress(80);
