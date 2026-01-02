@@ -364,6 +364,7 @@
         import { acceleratedRaycast, computeBatchedBoundsTree } from 'three-mesh-bvh';
         import { createRadixSort, extendBatchedMeshPrototype, getBatchedMeshLODCount } from '@three.ez/batched-mesh-extensions';
         import { performanceRangeLOD, simplifyGeometriesByErrorLOD } from '@three.ez/simplify-geometry';
+        import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
         // Extend BatchedMesh prototype with new methods
         extendBatchedMeshPrototype();
