@@ -376,7 +376,7 @@
         let camera, scene, renderer;
 
         // Configuration - adjust these values as needed
-        const instancesCount = 10000;  // Reduced from 500k for better initial load
+        const instancesCount = 5000;  // Reduced from 500k for better initial load
         const geometryCount = 10;
         const lodLevels = 5;
 
@@ -515,7 +515,7 @@
                 // Add LOD levels with increasing distances
                 batchedMesh.addGeometryLOD(geometryId, geometryLOD[1], 50);
                 batchedMesh.addGeometryLOD(geometryId, geometryLOD[2], 100);
-                batchedMesh.addGeometryLOD(geometryId, geometryLOD[3], 125);
+                batchedMesh.addGeometryLOD(geometryId, geometryLOD[3], 250);
                 batchedMesh.addGeometryLOD(geometryId, geometryLOD[4], 500);
             }
 
