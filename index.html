@@ -434,6 +434,8 @@
 
             updateProgress(40);
 
+            // Load pyramidal cell model
+            const loader = new GLTFLoader();
             const gltf = await loader.loadAsync('models/pyramidal_cell.glb');
 
             // Extract geometry from the loaded model
