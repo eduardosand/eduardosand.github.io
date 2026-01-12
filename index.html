@@ -418,7 +418,9 @@
 
             // Scene
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x111118);
+            // scene.background = new THREE.Color(0x111118);
+            const random_num = Math.random();
+            scene.background = new THREE.Color().setHSL(random_num, 0.7, 0.5);
 
             // Environment map for nice reflections
             const pmremGenerator = new THREE.PMREMGenerator(renderer);
@@ -558,7 +560,11 @@
                 batchedMesh.setMatrixAt(id, matrix.compose(position, quaternion, scale));
                 
                 // Random color (HSL for nice distribution)
-                batchedMesh.setColorAt(id, color.setHSL(Math.random(), 0.7, 0.5));
+                if (geoIndex === 1) {
+                    batchedMesh.setColorAt(id, color.setHSL(random_num, 0.7, 0.5));
+                } else {
+                    batchedMesh.setColorAt(id, color.setHSL(Math.random(), 0.7, 0.5));
+                }
             }
 
             updateProgress(90);
