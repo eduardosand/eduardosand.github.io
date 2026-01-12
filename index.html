@@ -561,9 +561,9 @@
                 
                 // Random color (HSL for nice distribution)
                 if (geoIndex === 1) {
-                    batchedMesh.setColorAt(id, color.setHSL(random_num, 0.7, 0.5));
-                } else {
                     batchedMesh.setColorAt(id, color.setHSL(Math.random(), 0.7, 0.5));
+                } else {
+                    batchedMesh.setColorAt(id, color.setHSL(random_num, 0.7, 0.5));
                 }
             }
 
